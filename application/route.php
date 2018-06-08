@@ -1,0 +1,30 @@
+<?php
+// +----------------------------------------------------------------------
+// | ThinkPHP [ WE CAN DO IT JUST THINK ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2006~2018 http://thinkphp.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: liu21st <liu21st@gmail.com>
+// +----------------------------------------------------------------------
+use think\Route;
+
+Route::any('/','Index/index', ['method'=>'get']);
+Route::any('/index','Index/index', ['method'=>'get']);
+Route::any('/login','Login/index', ['method'=>'get']);
+Route::any('/login/do_login','Login/do_login', ['method'=>'post']);
+
+Route::any('/action','Action/index', ['method'=>'post']);
+
+
+return [
+    '__pattern__' => [
+        'name' => '\w+',
+    ],
+    '[hello]'     => [
+        ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
+        ':name' => ['index/hello', ['method' => 'post']],
+    ],
+
+];
